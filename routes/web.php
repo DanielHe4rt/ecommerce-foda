@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\ProductsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,4 +21,7 @@ Route::get('/', function () {
 
 Route::get('/categories', [CategoriesController::class, 'index'])->name('categories.index');
 Route::get('/categories/create', [CategoriesController::class, 'create'])->name('categories.create');
+
+Route::get('/products', [ProductsController::class, 'index'])->name('products.index');
+Route::post('/products', [ProductsController::class, 'store'])->name('products.store');
 

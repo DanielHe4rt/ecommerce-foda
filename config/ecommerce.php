@@ -3,6 +3,8 @@
 
 return [
     'categories' => [
+        'roupas',
+        'calçados',
         'celulares',
         'informática',
         'móveis',
