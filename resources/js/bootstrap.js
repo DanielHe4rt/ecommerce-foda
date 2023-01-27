@@ -1,5 +1,8 @@
 import _ from 'lodash';
+import jQuery from 'jquery';
 window._ = _;
+
+window.$ = jQuery
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
