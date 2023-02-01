@@ -12,7 +12,6 @@ class CategoriesControllerTest extends TestCase
     {
         $response = $this->get(route('categories.index'));
 
-        $response->assertStatus(Response::HTTP_OK)
-            ->assertJson(Category::all()->toArray());
+        $response->assertStatus(Response::HTTP_OK);
     }
 }

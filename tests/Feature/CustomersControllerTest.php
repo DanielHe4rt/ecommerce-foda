@@ -27,7 +27,9 @@ class CustomersControllerTest extends TestCase
         $customer = Customer::factory()->create();
 
         $payload = [
-            'name' => 'Daniel Reis'
+            'name' => 'Daniel Reis',
+            'document_id' => '12312312312',
+            'phone_number' => '12312312321'
         ];
 
         $response = $this->put(route('customers.update', $customer), $payload);

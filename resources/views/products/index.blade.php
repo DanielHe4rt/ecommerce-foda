@@ -25,7 +25,7 @@
                     <td>{{ $product->stock }}</td>
                     <td class="d-flex ">
                         <a href="{{ route('products.edit', $product) }}" class="btn btn-warning ">Editar</a>
-                        <form method="POST" action="{{ route('products.delete', $product) }}">
+                        <form method="POST" action="{{ route('products.destroy', $product) }}">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">Apagar</button>
