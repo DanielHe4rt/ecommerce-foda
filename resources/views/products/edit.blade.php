@@ -5,6 +5,7 @@
         <h1>
             Editar Produto #{{ $product->id }}
         </h1>
+        <x-alert></x-alert>
         <form action="{{ route('products.update', $product) }}" method="POST">
             @csrf
             @method('PUT')

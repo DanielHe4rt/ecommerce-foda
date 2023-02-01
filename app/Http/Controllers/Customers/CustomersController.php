@@ -3,12 +3,14 @@
 namespace App\Http\Controllers\Customers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Customers\CreateCustomerRequest;
+use App\Http\Requests\Customers\UpdateCustomerRequest;
 use App\Models\Customers\Customer;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
-class CustomerController extends Controller
+class CustomersController extends Controller
 {
     public function viewCustomers(): View
     {
@@ -22,10 +24,9 @@ class CustomerController extends Controller
         return view('customers.create');
     }
 
-    public function postCustomer(Request $request): RedirectResponse
+    public function postCustomer(CreateCustomerRequest $request): RedirectResponse
     {
-        $customer = Customer::create($request->all());
-
+        $customer = Customer::create($request->validated());
         return redirect()->route('customers.edit', $customer);
     }
 
@@ -34,10 +35,13 @@ class CustomerController extends Controller
         return view('customers.edit', ['customer' => $customer]);
     }
 
-    public function putCustomer(Request $request, Customer $customer)
+    public function putCustomer(UpdateCustomerRequest $request, Customer $customer)
     {
         $customer->update($request->all());
-        return redirect()->route('customers.edit', $customer);
+
+        return redirect()
+            ->route('customers.edit', $customer)
+            ->with('alert.success', 'Cliente alterado com sucesso!');
     }
 
     public function deleteCustomer(Customer $customer): RedirectResponse

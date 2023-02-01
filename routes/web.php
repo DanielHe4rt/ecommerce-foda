@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoriesController;
-use App\Http\Controllers\Customers\CustomerController;
+use App\Http\Controllers\Customers\CustomersController;
 use App\Http\Controllers\ProductsController;
 use Illuminate\Support\Facades\Route;
 
@@ -34,9 +34,9 @@ Route::get('/products/{product}', [ProductsController::class, 'edit'])->name('pr
 Route::put('/products/{product}', [ProductsController::class, 'update'])->name('products.update');
 Route::delete('/products/{product}', [ProductsController::class, 'delete'])->name('products.delete');
 
-Route::get('/customers', [CustomerController::class, 'viewCustomers'])->name('customers.index');
-Route::get('/customers/create', [CustomerController::class, 'viewNewCustomer'])->name('customers.create');
-Route::post('/customers', [CustomerController::class, 'postCustomer'])->name('customers.store');
-Route::get('/customers/{customer}', [CustomerController::class, 'viewCustomerEdit'])->name('customers.edit');
-Route::put('/customers/{customer}', [CustomerController::class, 'putCustomer'])->name('customers.update');
-Route::delete('/customers/{customer}', [CustomerController::class, 'deleteCustomer'])->name('customers.delete');
+Route::get('/customers', [CustomersController::class, 'viewCustomers'])->name('customers.index');
+Route::get('/customers/create', [CustomersController::class, 'viewNewCustomer'])->name('customers.create');
+Route::post('/customers', [CustomersController::class, 'postCustomer'])->name('customers.store');
+Route::get('/customers/{customer}', [CustomersController::class, 'viewCustomerEdit'])->name('customers.edit');
+Route::put('/customers/{customer}', [CustomersController::class, 'putCustomer'])->name('customers.update');
+Route::delete('/customers/{customer}', [CustomersController::class, 'deleteCustomer'])->name('customers.delete');

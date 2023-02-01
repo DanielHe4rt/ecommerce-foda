@@ -2,6 +2,7 @@
 
 @section('content')
     <div class="container">
+        <x-alert></x-alert>
         <h1>Edição de Clientes - {{ $customer->name }}</h1>
         <div id="main-info">
             <form action="{{ route('customers.update', $customer) }}" method="POST">

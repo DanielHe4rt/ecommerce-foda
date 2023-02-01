@@ -32,8 +32,9 @@ class ProductsController extends Controller
         return redirect()->route('products.index');
     }
 
-    public function edit(Product $product): View
+    public function edit(Request $request, Product $product): View
     {
+
         return view('products.edit', [
             'categories' => Category::all(),
             'product' => $product
@@ -43,7 +44,8 @@ class ProductsController extends Controller
     public function update(Request $request, Product $product): RedirectResponse
     {
         $product->update($request->all());
-        return redirect()->route('products.edit', $product);
+        return redirect()->route('products.edit', $product)
+            ->with('alert.success', 'Produto alterado com sucesso!');
     }
 
     public function delete(Product $product): RedirectResponse
