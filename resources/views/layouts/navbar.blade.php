@@ -19,7 +19,9 @@
                 <li class="nav-item">
                     <a class="nav-link {{ request()->is('categories*') ? 'active' : '' }}" href="{{ route('categories.index') }}">Categorias</a>
                 </li>
-
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->is('customers*') ? 'active' : '' }}" href="{{ route('customers.index') }}">Clientes</a>
+                </li>
             </ul>
 
         </div>
