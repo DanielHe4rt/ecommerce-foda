@@ -1,5 +1,14 @@
 import _ from 'lodash';
+import jQuery from 'jquery';
+
 window._ = _;
+
+import * as Popper from '@popperjs/core'
+window.Popper = Popper
+
+import 'bootstrap'
+
+window.$ = jQuery
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
