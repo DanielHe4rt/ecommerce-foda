@@ -194,6 +194,10 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        /*
+         * E-commerce Service Providers...
+         */
+        \App\Providers\Ecommerce\ProductServiceProvider::class,
 
     ],
 

@@ -3,16 +3,23 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Repositories\ProductCategories\ProductCategoryRepository;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class CategoriesController extends Controller
 {
+    public function __construct(
+        private readonly ProductCategoryRepository $productCategoryRepository
+    )
+    {
+    }
+
     public function index(): View
     {
         return view('categories.index', [
-            'categories' => Category::query()->paginate()
+            'categories' => $this->productCategoryRepository->paginate()
         ]);
     }
 
@@ -23,7 +30,8 @@ class CategoriesController extends Controller
 
     public function store(Request $request): RedirectResponse
     {
-        Category::create($request->all());
+        $this->productCategoryRepository->create($request->all());
+
         return redirect()->route('categories.index');
     }
 
@@ -34,15 +42,15 @@ class CategoriesController extends Controller
         ]);
     }
 
-    public function update(Request $request, Category $category): RedirectResponse
+    public function update(Request $request, int $category): RedirectResponse
     {
-        $category->update($request->all());
+        $category = $this->productCategoryRepository->update($category, $request->all());
         return redirect()->route('categories.edit', $category);
     }
 
-    public function delete(Category $category): RedirectResponse
+    public function delete(int $category): RedirectResponse
     {
-        $category->delete();
+        $this->productCategoryRepository->delete($category);
 
         return redirect()->route('categories.index');
     }
